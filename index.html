@@ -3,258 +3,231 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Aetheris - SMMA</title>
-
-  <!-- AOS CSS -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
+  <title>Aetheris </title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #0e0e0e;
+      background: #0e0e0e;
       color: #fff;
       overflow-x: hidden;
       scroll-behavior: smooth;
     }
 
-    header {
-      background: #141414;
-      padding: 20px 40px;
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(14, 14, 14, 0.9);
+      padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
-      box-shadow: 0 2px 10px rgba(0,255,179,0.1);
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+    }
+
+    nav h2 {
+      background: linear-gradient(45deg, #ffffff, #a855f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav ul li a {
+      color: #bbb;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #a855f7;
+    }
+
+    header {
+      padding: 5rem 2rem;
+      text-align: center;
+      animation: fadeDown 1s ease forwards;
     }
 
     header h1 {
-      color: #00ffb3;
-      font-size: 1.8rem;
-      animation: glow 2s ease-in-out infinite alternate;
+      font-size: 3.5rem;
+      letter-spacing: 2px;
+      background: linear-gradient(45deg, #ffffff, #a855f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    nav {
+    header p {
+      font-size: 1.3rem;
+      margin-top: .5rem;
+      color: #bbb;
+    }
+
+    section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .about {
       display: flex;
-      gap: 20px;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
     }
 
-    nav a {
-      text-decoration: none;
-      color: #ccc;
-      font-weight: 500;
-      transition: all 0.3s ease;
+    .about img {
+      width: 350px;
+      border-radius: 1rem;
+      box-shadow: 0 0 25px rgba(168, 85, 247, 0.3);
     }
 
-    nav a:hover {
-      color: #00ffb3;
-      transform: translateY(-3px);
+    .about-text {
+      flex: 1;
     }
 
-    .menu-toggle {
-      display: none;
-      font-size: 26px;
-      cursor: pointer;
-      color: #00ffb3;
+    .about-text h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #a855f7;
     }
 
-    .hero {
-      text-align: center;
-      padding: 100px 20px;
-      background: linear-gradient(to right, #0f0f0f, #181818);
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
     }
 
-    .hero h2 {
-      font-size: 3rem;
-      margin-bottom: 20px;
-      animation: fadeInDown 1s ease;
+    .card {
+      background: #1a1a1a;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+      transform: translateY(30px);
+      opacity: 0;
+      transition: all 0.6s ease;
     }
 
-    .hero p {
-      color: #bbb;
-      max-width: 600px;
-      margin: auto;
-      font-size: 1.2rem;
-      animation: fadeInUp 1.2s ease;
+    .card.visible {
+      transform: translateY(0);
+      opacity: 1;
     }
 
-    .cta a {
-      margin-top: 30px;
-      display: inline-block;
-      padding: 12px 30px;
-      background: linear-gradient(45deg, #00ffb3, #00aaff);
-      color: #000;
-      text-decoration: none;
-      border-radius: 30px;
-      font-weight: bold;
-      position: relative;
-      transition: all 0.4s ease;
-      animation: pulse 2s infinite;
+    .card:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 0 30px rgba(168, 85, 247, 0.4);
     }
 
-    .cta a:hover {
-      background: linear-gradient(45deg, #00e6a5, #0099ff);
-      transform: scale(1.05);
-      box-shadow: 0 0 15px #00ffb3;
+    .card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      color: #a855f7;
     }
 
-    .cta a:active,
-    button:active {
-      transform: scale(0.95);
-      transition: transform 0.1s ease;
-    }
-
-    .section {
-      padding: 80px 20px;
+    .contact {
       text-align: center;
     }
 
-    .section h3 {
-      font-size: 2.4rem;
-      margin-bottom: 20px;
+    .contact h2 {
+      color: #a855f7;
+      margin-bottom: 1rem;
     }
 
-    .section p {
-      color: #bbb;
-      max-width: 700px;
-      margin: auto;
+    .contact p {
       font-size: 1.1rem;
-    }
-
-    form {
-      max-width: 500px;
-      margin: 30px auto;
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 5px;
-    }
-
-    button {
-      padding: 12px 25px;
-      background: linear-gradient(45deg, #00ffb3, #00aaff);
-      color: #000;
-      font-weight: bold;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    button:hover {
-      background: linear-gradient(45deg, #00e6a5, #0099ff);
-      transform: scale(1.05);
+      margin: 0.5rem 0;
+      color: #ddd;
     }
 
     footer {
-      background: #111;
-      color: #666;
       text-align: center;
-      padding: 20px;
+      padding: 2rem;
+      color: #888;
+      font-size: 0.9rem;
     }
 
-    @media (max-width: 768px) {
-      nav {
-        flex-direction: column;
-        display: none;
-        width: 100%;
-        background: #1a1a1a;
-        padding: 10px 0;
-      }
-
-      nav.active { display: flex; }
-      .menu-toggle { display: block; }
-    }
-
-    /* Animations */
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.03); }
-      100% { transform: scale(1); }
-    }
-
-    @keyframes glow {
-      from { text-shadow: 0 0 10px #00ffb3; }
-      to { text-shadow: 0 0 20px #00ffb3; }
-    }
-
-    @keyframes fadeInDown {
-      0% { opacity: 0; transform: translateY(-30px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeInUp {
-      0% { opacity: 0; transform: translateY(30px); }
-      100% { opacity: 1; transform: translateY(0); }
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
+  <nav>
+    <h2>Aetheris</h2>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-  <header>
+  <header id="home">
     <h1>Aetheris</h1>
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-    <nav id="nav">
-      <a href="#services">Services</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <p>Creative Marketing Solutions for the Digital Age 🚀</p>
   </header>
 
-  <section class="hero" data-aos="zoom-in">
-    <h2>Grow Your Brand with Aetheris</h2>
-    <p>We provide businesses multiple services, to help them achive their goals. providing everything you need to help your business grow at one place.</p>
-    <div class="cta">
-      <h3> Take action now or get left behind in this digital world.</h3>
-      <a href="#contact">START NOW!</a>
+  <section id="about" class="about">
+    <img src="aetheris.png" alt="About Aetheris">
+    <div class="about-text">
+      <h2>About Us</h2>
+      <p>
+        we are a social media marketing agency who help brands and local shops to go viral and make their digital presence. we are expert and professional in the work we do for brands. 
+      </p>
     </div>
   </section>
 
-  <section class="section" id="services" data-aos="flip-left">
-    <h3>Our Services</h3>
-    <h4>✔ Social Media Management</br>
-✔ Video editing </br>
-✔ Graphics designing</br>
-✔ Shortform content creation</br>
-✔ Website devlopment</br>
-✔ AI</br>
-✔ Paid Advertising (Meta, Google)</br>
-✔ UGC Creation</br>
-✔ Script writing</br>
-</p>
+  <section id="services">
+    <h2 style="text-align:center; color:#a855f7; margin-bottom:2rem;">Our Services</h2>
+    <div class="services">
+      <div class="card"><h3> Social Media Management</h3><p>Grow and engage your audience with expert strategies.</p></div>
+      <div class="card"><h3> Video Editing</h3><p>Eye-catching edits that capture attention instantly.</p></div>
+      <div class="card"><h3> Graphics Designing</h3><p>Modern, sleek, and scroll-stopping visuals.</p></div>
+      <div class="card"><h3> Shortform Content Creation</h3><p>Reels, TikToks, and shorts optimized for virality.</p></div>
+      <div class="card"><h3> Website Development</h3><p>Beautiful and responsive websites for your brand.</p></div>
+      <div class="card"><h3> AI</h3><p>Leveraging AI to supercharge growth & automation.</p></div>
+      <div class="card"><h3> Paid Advertising (Meta, Google)</h3><p>High-converting campaigns tailored to your goals.</p></div>
+      <div class="card"><h3> UGC Creation</h3><p>Authentic content that builds trust & connection.</p></div>
+      <div class="card"><h3> Script Writing</h3><p>Powerful scripts designed to sell and engage.</p></div>
+    </div>
   </section>
 
-  <section class="section" id="about" data-aos="slide-right">
-    <h3>About Us</h3>
-    <p>We're a team of creators, marketers, and experts dedicated to making your brands grow. Whether you're starting or scaling, we’ve got the blueprint for growth.</p>
-  </section>
-
-  <section class="section" id="contact" data-aos="slide-up">
-    <h3>Let’s Connect</h3>
-    <p>Email us at <a href="mailto:aetheris30@gmail.com" style="color:#00ffb3;">aetheris30@gmail.com</a> or DM us on Instagram @aetheris01</p>
-    
+  <section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <p>We’d love to hear from you. Let’s build something amazing together.</p>
+    <p>📧 Email: aetheris30@gmail.com</p>
+    <p>📞 Phone: +91 93285 86125</p>
   </section>
 
   <footer>
-    &copy; 2025 Aetheris Media. All rights reserved.
+    © 2025 Aetheris. All Rights Reserved.
   </footer>
 
-  <!-- AOS JS -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init({
-      duration: 1200,
-      once: true,
-    });
-
-    function toggleMenu() {
-      document.getElementById('nav').classList.toggle('active');
-    }
+    // Animate cards on scroll
+    const cards = document.querySelectorAll('.card');
+    const revealOnScroll = () => {
+      cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          card.classList.add('visible');
+        }
+      });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
   </script>
 </body>
 </html>
-
